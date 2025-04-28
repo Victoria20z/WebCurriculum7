@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Curriculum Vitae</title>
+  <link rel="stylesheet" href="stylescurriculum.css">
+</head>
+<body>
+
+    <header>
+      <nav class="navbar">
+        <h1>Curriculum</h1>
+        <div class="nav-buttons">
+          <button>Inicio</button>
+          <button>Contacto</button>
+        </div>
+      </nav>
+      
+      <div class="slider-frame">
+        <ul class="slides">
+            <li class="slider2"><img src="slider1.jpg" alt="Imagen 1"></li>
+            <li class="slider2"><img src="slider2.jpg" alt="Imagen 2"></li>
+            <li class="slider2"><img src="slider3.jpg" alt="Imagen 3"></li>
+            <li class="slider2"><img src="slider4.jpg" alt="Imagen 4"></li>
+        </ul>
+      </div>
+      
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="perfil.jfif" alt="Imagen Perfil" style="width: 200px; height: 200px; border-radius: 50%; margin: 10px;">
+      </div>
+    </header>
+
+  <main>
+    <section class="info-contacto">
+      <h2>Información de Contacto</h2>
+      <p>Tel: 3314636520 | Email: a22100199@ceti.mx</p>
+    </section>
+
+    <section class="acerca-de-mi">
+      <h2>Acerca de mí</h2>
+      <p>Soy Tecnólogo en la Carrera de Desarrollo de Software</p>
+      <p>Tengo 18 años</p>
+    </section>
+
+    <section class="experiencia">
+      <h2>Experiencia Laboral y Formación Académica</h2>
+      <div class="grid">
+        <div>
+          <h3>Experiencia</h3>
+          <p>Empresa X - Desarrollador Web (2027 - 2029)</p>
+        </div>
+        <div>
+          <h3>Formación</h3>
+          <p>CETI - Desarrollo de Software (2022 - presente)</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="portafolio">
+      <h2>Portafolio</h2>
+      <div class="carousel">
+        <img src="Proyecto1.png" alt="Proyecto 1" class="slide active" style="width: 320px; height: 280px;">
+        <img src="Proyecto 2.png" alt="Proyecto 2" class="slide" style="width: 300px; height: 350px;">
+        <img src="Proyecto3.png" alt="Proyecto 3" class="slide" style="width: 300px; height: 350px;">
+    
+        <div class="controls">
+          <button onclick="anterior()">◀️</button>
+          <button onclick="siguiente()">▶️</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="fecha"></span> Mi CV</p>
+  </footer>
+
+  <script>
+    const fechaActual = new Date();
+const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+const fechaFormateada = fechaActual.toLocaleDateString('es-ES', opciones);
+document.getElementById('fecha').textContent = fechaFormateada;
+
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+
+function mostrarSlide(nuevoIndex) {
+  slides[index].classList.remove("active"); // Quita activo a la imagen actual
+  index = (nuevoIndex + slides.length) % slides.length; // Calcula el nuevo índice
+  slides[index].classList.add("active"); // Activa la nueva imagen
+}
+
+function siguiente() {
+  mostrarSlide(index + 1);
+}
+
+function anterior() {
+  mostrarSlide(index - 1);
+}
+  </script>
+</body>
+</html>
